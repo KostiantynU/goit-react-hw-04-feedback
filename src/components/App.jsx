@@ -39,20 +39,21 @@ export function App() {
 
   const [myState, mySetState] = useState({ good: 0, neutral: 0, bad: 0 });
   const onLeaveFeedback = option => {
-    switch (option) {
-      case 'good':
-        mySetState(prevState => ({ ...prevState, good: myState.good + 1 }));
-        break;
-      case 'neutral':
-        mySetState(prevState => ({ ...prevState, neutral: myState.neutral + 1 }));
-        break;
-      case 'bad':
-        mySetState(prevState => ({ ...prevState, bad: myState.bad + 1 }));
-        break;
-      default:
-        console.log('Something goes wrong');
-    }
+    mySetState(prevState => ({ ...prevState, [option]: myState[option] + 1 }));
+    // switch (option) {
+    //   case 'good':
+    //     mySetState(prevState => ({ ...prevState, good: myState.good + 1 }));
+    //     break;
+    //   case 'neutral':
+    //     mySetState(prevState => ({ ...prevState, neutral: myState.neutral + 1 }));
+    //     break;
+    //   case 'bad':
+    //     mySetState(prevState => ({ ...prevState, bad: myState.bad + 1 }));
+    //     break;
+    //   default:
+    //     console.log('Something goes wrong');
   };
+  // };
 
   const countTotalFeedback = () => {
     return Object.values(myState).reduce((acc, el) => {
